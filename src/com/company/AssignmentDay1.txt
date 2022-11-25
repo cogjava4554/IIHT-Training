@@ -1,0 +1,70 @@
+1)select FIRST_NAME as WORKER_NAME from Worker ;
+
+2)select upper(FIRST_NAME)  from Worker ;
+select ucase(FIRST_NAME)  from Worker ;
+
+3)select distinct(department) from Worker;
+
+4)select left(FIRST_NAME,3) as FIRST_NAME from worker;
+
+5)select locate('a',FIRST_NAME)  from Worker where FIRST_NAME = 'Amitabh';
+select Position('a' in FIRST_NAME)  from Worker where FIRST_NAME = 'Amitabh';
+select Instr(FIRST_NAME,'a')  from Worker where FIRST_NAME = 'Amitabh';
+
+6)select Rtrim(FIRST_NAME) from Worker;
+
+7)select Ltrim(DEPARTMENT) from Worker;
+
+8)select distinct(length(department)) from Worker;
+
+9)select replace(FIRST_NAME,'a','A')  from Worker;
+
+10)select concat(FIRST_NAME,' ',LAST_NAME) as COMPLETE_NAME from Worker;
+select concat_ws(' ',FIRST_NAME,LAST_NAME) as COMPLETE_NAME from Worker;
+
+11)select * from Worker order by FIRST_NAME asc;
+
+12)select * from Worker order by FIRST_NAME asc,DEPARTMENT desc;
+
+13)select * from Worker where FIRST_NAME = 'Vipul' AND FIRST_NAME = 'Satish';
+
+14)select * from Worker where not FIRST_NAME = 'Vipul' AND not FIRST_NAME = 'Satish';
+
+15)select * from Worker where DEPARTMENT = 'Admin';
+
+16)select * from Worker where FIRST_NAME like '%a%' ;
+
+17)select * from Worker where FIRST_NAME like '%a' ;
+
+18)select * from Worker where FIRST_NAME like '%h' and length(FIRST_NAME) = 6 ;
+
+19)select * from Worker where salary between 100000 AND 500000;
+
+20)select * from Worker where joining_date >= '2014-02-01 00:00:00' AND joining_date < '2014-03-01 00:00:00' ;
+
+21)select count(*) from worker where Department = 'Admin';
+
+22)select concat(FIRST_NAME,' ',LAST_NAME) as WORKER_NAME from Worker where salary >= 50000 AND salary <= 100000;
+
+23)select department ,count(*) as Number_Of_Worker from Worker group by department order by Number_Of_Worker desc;
+
+24)select * from Worker w left join title t
+on w.worker_id = t.worker_ref_id
+where t.WORKER_TITLE = 'Manager' ;
+
+25)select worker_id,first_name,last_name,salary,joining_date,department,count(*) from worker
+group by worker_id,first_name,last_name,salary,joining_date,department
+having count(*) > 1 ;
+
+26)select * from worker where not mod(worker_id,2) = 0;
+
+27)select * from worker where mod(worker_id,2) = 0;
+
+28)Create Table clone select * from worker ;
+
+29)select * from worker w
+inner join clone c
+on w.worker_id = c.worker_id;
+
+30)select worker_id from worker w where worker_id
+not in (select worker_ref_id from bonus b where w.worker_id = b.worker_ref_id );
